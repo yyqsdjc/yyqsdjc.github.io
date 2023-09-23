@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="true" > 
+<link href="/fontawesome/css/fontawesome.css" rel="stylesheet">
+<link href="/fontawesome/css/brands.css" rel="stylesheet">
+<link href="/fontawesome/css/solid.css" rel="stylesheet">
+<script src="/js/color.global.min.js" ></script>
+<script src="/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+
+  
+  <title>python——字符串 | 小羊不乖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
+  <meta name="description" content="字符串了解字符串字符串字符串的本质是：字符序列python中的字符串是不可变的字符串的编码Python3直接支持Unicode，可以表示世界上任何书面语言的字符。Python3的字符默认就是16位 Unicode编码，ASCII码是Unicode编码的子集。使用内置函数ord()可以把字符转换成对应的Unicode码使用内置函数chr()可以把十进制数字转换成对应的字符。空字符串和len()函数P">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python——字符串">
+<meta property="og:url" content="https://yyqsdjc.github.io/2023/09/22/%E5%AD%97%E7%AC%A6%E4%B8%B2/index.html">
+<meta property="og:site_name" content="小羊不乖">
+<meta property="og:description" content="字符串了解字符串字符串字符串的本质是：字符序列python中的字符串是不可变的字符串的编码Python3直接支持Unicode，可以表示世界上任何书面语言的字符。Python3的字符默认就是16位 Unicode编码，ASCII码是Unicode编码的子集。使用内置函数ord()可以把字符转换成对应的Unicode码使用内置函数chr()可以把十进制数字转换成对应的字符。空字符串和len()函数P">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-09-22T11:35:10.014Z">
+<meta property="article:modified_time" content="2023-09-22T11:43:31.146Z">
+<meta property="article:author" content="小羊">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="小羊不乖" type="application/atom+xml">
+  
+  
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-192.png" sizes="192x192">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-192.png" sizes="192x192">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  
+  
+    
+<div id="banner" class="">
+  <img src="/assets/bj3.jpg" itemprop="image">
+  <div id="banner-dim"></div>
+</div>
+ 
+   
+  <div id="main-grid" class="shadow   ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/">
+      <div id="vivia-logo">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <div>小羊不乖 </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/">首页</a>
+    
+      <a class="main-nav-link" href="/archives">归档</a>
+    
+      <a class="main-nav-link" href="/about">关于</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
+      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
+    </a>
+    
+      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/atom.xml" title="RSS 订阅">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M198-120q-25.846 0-44.23-18.384-18.384-18.385-18.384-44.23 0-25.846 18.384-44.23 18.384-18.385 44.23-18.385 25.846 0 44.23 18.385 18.384 18.384 18.384 44.23 0 25.845-18.384 44.23Q223.846-120 198-120Zm538.385 0q-18.846 0-32.923-13.769-14.076-13.769-15.922-33.23-8.692-100.616-51.077-188.654-42.385-88.039-109.885-155.539-67.5-67.501-155.539-109.885Q283-663.462 182.385-672.154q-19.461-1.846-33.23-16.23-13.769-14.385-13.769-33.846t14.076-32.922q14.077-13.461 32.923-12.23 120.076 8.692 226.038 58.768 105.961 50.077 185.73 129.846 79.769 79.769 129.846 185.731 50.077 105.961 58.769 226.038 1.231 18.846-12.538 32.922Q756.461-120 736.385-120Zm-252 0q-18.231 0-32.423-13.461t-18.653-33.538Q418.155-264.23 348.886-333.5q-69.27-69.27-166.501-84.423-20.077-4.462-33.538-18.961-13.461-14.5-13.461-33.346 0-19.076 13.884-33.23 13.884-14.153 33.115-10.922 136.769 15.384 234.384 112.999 97.615 97.615 112.999 234.384 3.231 19.23-10.538 33.115Q505.461-120 484.385-120Z"/></svg>
+      </a>
+    
+    <div id="nav-menu-btn" class="nav-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/">首页</a>
+    
+      <a class="nav-dropdown-link" href="/archives">归档</a>
+    
+      <a class="nav-dropdown-link" href="/about">关于</a>
+    
+    
+      <a class="nav-dropdown-link" href="/atom.xml" title="RSS 订阅">RSS</a>
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=/assets/avatar.jpg></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">小羊 </div>
+      <div class="dot"></div>
+      <div class="subtitle">其他网址 </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://blog.csdn.net/shisanxiang_?type=blog" title="CSDN"><i class="fa-brands fa-solid fa-c fa-beat"></i></a>
+        
+          <a class="link-btn" href="https://yyqsdjc.github.io/" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+
+
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">分类</h3>
+      <div class="category-box">
+            <a class="category-link" href="/categories/programming/">
+                编程
+                <div class="category-count">2</div>
+            </a>
+        </div>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">标签</h3>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">归档</h3>
+      
+      
+        <a class="archive-link" href="/archives/2023/09 ">
+          九月 2023 
+          <div class="archive-count">6 </div>
+        </a>
+      
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">最新文章</h3>
+      <ul>
+        
+          <a class="recent-link" href="/2023/09/22/%E5%AD%97%E5%85%B8/" title="python——字典" >
+            <div class="recent-link-text">
+              python——字典
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2023/09/22/%E5%85%83%E7%BB%84/" title="python——元组" >
+            <div class="recent-link-text">
+              python——元组
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2023/09/22/%E5%88%97%E8%A1%A8/" title="python——列表" >
+            <div class="recent-link-text">
+              python——列表
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2023/09/22/%E9%9B%86%E5%90%88/" title="python——集合" >
+            <div class="recent-link-text">
+              python——集合
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2023/09/22/%E5%AD%97%E7%AC%A6%E4%B8%B2/" title="python——字符串" >
+            <div class="recent-link-text">
+              python——字符串
+            </div>
+          </a>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+<article id="post-字符串" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        python——字符串
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2023-09-22T11:35:10.014Z" itemprop="datePublished">2023-09-22</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    未分类 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            1.8k 词 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><h3 id="了解字符串"><a href="#了解字符串" class="headerlink" title="了解字符串"></a>了解字符串</h3><h4 id="字符串-1"><a href="#字符串-1" class="headerlink" title="字符串"></a>字符串</h4><h6 id="字符串的本质是：字符序列"><a href="#字符串的本质是：字符序列" class="headerlink" title="字符串的本质是：字符序列"></a>字符串的本质是：字符序列</h6><h6 id="python中的字符串是不可变的"><a href="#python中的字符串是不可变的" class="headerlink" title="python中的字符串是不可变的"></a>python中的字符串是不可变的</h6><h4 id="字符串的编码"><a href="#字符串的编码" class="headerlink" title="字符串的编码"></a>字符串的编码</h4><h6 id="Python3直接支持Unicode，可以表示世界上任何书面语言的字符。Python3的字符默认就是16位-Unicode编码，ASCII码是Unicode编码的子集。"><a href="#Python3直接支持Unicode，可以表示世界上任何书面语言的字符。Python3的字符默认就是16位-Unicode编码，ASCII码是Unicode编码的子集。" class="headerlink" title="Python3直接支持Unicode，可以表示世界上任何书面语言的字符。Python3的字符默认就是16位 Unicode编码，ASCII码是Unicode编码的子集。"></a>Python3直接支持Unicode，可以表示世界上任何书面语言的字符。Python3的字符默认就是16位 Unicode编码，ASCII码是Unicode编码的子集。</h6><h6 id="使用内置函数ord-可以把字符转换成对应的Unicode码"><a href="#使用内置函数ord-可以把字符转换成对应的Unicode码" class="headerlink" title="使用内置函数ord()可以把字符转换成对应的Unicode码"></a>使用内置函数ord()可以把字符转换成对应的Unicode码</h6><h6 id="使用内置函数chr-可以把十进制数字转换成对应的字符。"><a href="#使用内置函数chr-可以把十进制数字转换成对应的字符。" class="headerlink" title="使用内置函数chr()可以把十进制数字转换成对应的字符。"></a>使用内置函数chr()可以把十进制数字转换成对应的字符。</h6><h4 id="空字符串和len-函数"><a href="#空字符串和len-函数" class="headerlink" title="空字符串和len()函数"></a>空字符串和len()函数</h4><h6 id="Python允许空字符串的存在，不包含任何字符且长度为0"><a href="#Python允许空字符串的存在，不包含任何字符且长度为0" class="headerlink" title="Python允许空字符串的存在，不包含任何字符且长度为0"></a>Python允许空字符串的存在，不包含任何字符且长度为0</h6><h6 id="len-用于计算字符串含有多少字符"><a href="#len-用于计算字符串含有多少字符" class="headerlink" title="len()用于计算字符串含有多少字符"></a>len()用于计算字符串含有多少字符</h6><h6 id="！注意：汉字和英文字符长度一样"><a href="#！注意：汉字和英文字符长度一样" class="headerlink" title="！注意：汉字和英文字符长度一样"></a>！注意：汉字和英文字符长度一样</h6><h4 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h4><table>
+<thead>
+<tr>
+<th>转义字符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\</td>
+<td>续行符</td>
+</tr>
+<tr>
+<td>\</td>
+<td>反斜杠符号</td>
+</tr>
+<tr>
+<td>\‘</td>
+<td>单引号</td>
+</tr>
+<tr>
+<td>\‘’</td>
+<td>双引号</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>退格</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>换行</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>横向制表符</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>回车</td>
+</tr>
+</tbody></table>
+<h3 id="字符串的创建"><a href="#字符串的创建" class="headerlink" title="字符串的创建"></a>字符串的创建</h3><h4 id="引号创建字符串"><a href="#引号创建字符串" class="headerlink" title="引号创建字符串"></a>引号创建字符串</h4><h6 id="通过单引号或双引号创建字符串。例如：a-’abc’-b-”sxt”"><a href="#通过单引号或双引号创建字符串。例如：a-’abc’-b-”sxt”" class="headerlink" title="通过单引号或双引号创建字符串。例如：a&#x3D;’abc’; b&#x3D;”sxt”"></a>通过单引号或双引号创建字符串。例如：a&#x3D;’abc’; b&#x3D;”sxt”</h6><h3 id="字符串的操作"><a href="#字符串的操作" class="headerlink" title="字符串的操作"></a>字符串的操作</h3><h4 id="字符串拼接"><a href="#字符串拼接" class="headerlink" title="字符串拼接"></a>字符串拼接</h4><h5 id="可以使用-将多个字符串拼接起来"><a href="#可以使用-将多个字符串拼接起来" class="headerlink" title="可以使用+将多个字符串拼接起来"></a>可以使用+将多个字符串拼接起来</h5><h6 id="a-如果-两边都是字符串，则拼接。"><a href="#a-如果-两边都是字符串，则拼接。" class="headerlink" title="a. 如果+两边都是字符串，则拼接。"></a>a. 如果+两边都是字符串，则拼接。</h6><h6 id="b-如果-两边都是数字，则加法运算。"><a href="#b-如果-两边都是数字，则加法运算。" class="headerlink" title="b. 如果+两边都是数字，则加法运算。"></a>b. 如果+两边都是数字，则加法运算。</h6><h6 id="c-如果-两边类型不同，则抛出异常。"><a href="#c-如果-两边类型不同，则抛出异常。" class="headerlink" title="c. 如果+两边类型不同，则抛出异常。"></a>c. 如果+两边类型不同，则抛出异常。</h6><h5 id="可以将多个字面字符串直接放到一起实现拼接。"><a href="#可以将多个字面字符串直接放到一起实现拼接。" class="headerlink" title="可以将多个字面字符串直接放到一起实现拼接。"></a>可以将多个字面字符串直接放到一起实现拼接。</h5><h4 id="字符串复制"><a href="#字符串复制" class="headerlink" title="字符串复制"></a>字符串复制</h4><h6 id="使用-可以实现字符串复制。"><a href="#使用-可以实现字符串复制。" class="headerlink" title="使用*可以实现字符串复制。"></a>使用*可以实现字符串复制。</h6><h4 id="不换行打印"><a href="#不换行打印" class="headerlink" title="不换行打印"></a>不换行打印</h4><h6 id="通过参数end-“任意字符串”。实现末尾添加任何内容："><a href="#通过参数end-“任意字符串”。实现末尾添加任何内容：" class="headerlink" title="通过参数end &#x3D; “任意字符串”。实现末尾添加任何内容："></a>通过参数end &#x3D; “任意字符串”。实现末尾添加任何内容：</h6><p>eg：print(“aa”,end&#x3D;”*”) print(“bb”,end&#x3D;”##”) print(“cc”,end&#x3D;”\t”)</p>
+<h4 id="从控制台读取字符串"><a href="#从控制台读取字符串" class="headerlink" title="从控制台读取字符串"></a>从控制台读取字符串</h4><h6 id="使用input-从控制台读取键盘输入的内容"><a href="#使用input-从控制台读取键盘输入的内容" class="headerlink" title="使用input()从控制台读取键盘输入的内容"></a>使用input()从控制台读取键盘输入的内容</h6><p>myname&#x3D;input(“请输入你的名字”)  </p>
+<p>请输入你的名字：韩明 </p>
+<p>myname </p>
+<p>‘韩明’ </p>
+<p>！在input（）函数处执行了阻塞和等待</p>
+<h4 id="str-实现数字转型字符串"><a href="#str-实现数字转型字符串" class="headerlink" title="str()实现数字转型字符串"></a>str()实现数字转型字符串</h4><h6 id="str-可以帮助我们将其他数据类型转换为字符串"><a href="#str-可以帮助我们将其他数据类型转换为字符串" class="headerlink" title="str()可以帮助我们将其他数据类型转换为字符串"></a>str()可以帮助我们将其他数据类型转换为字符串</h6><p>eg： str(5.20) &#x3D;&#x3D;&gt; ‘5.20’ str(3.14e2)&#x3D;&#x3D;&gt;’314.0’ str(True) &#x3D;&#x3D;&gt; ‘True’</p>
+<h4 id="使用-提取字符"><a href="#使用-提取字符" class="headerlink" title="使用[]提取字符"></a>使用[]提取字符</h4><h6 id="过在字符串后面添加-，在-里面指定偏移量，可以提取-该位置的单个字符"><a href="#过在字符串后面添加-，在-里面指定偏移量，可以提取-该位置的单个字符" class="headerlink" title="过在字符串后面添加[]，在[]里面指定偏移量，可以提取 该位置的单个字符"></a>过在字符串后面添加[]，在[]里面指定偏移量，可以提取 该位置的单个字符</h6><p>正向搜索： 最左侧第一个字符，偏移量是0，第二个偏移量是1，以此类推。直到len(str)-1为止。 </p>
+<p>反向搜索： 最右侧第一个字符，偏移量是-1，倒数第二个偏移量是-2，以此类推，直到-len(str)为止。</p>
+<h4 id="replace-实现字符串替换"><a href="#replace-实现字符串替换" class="headerlink" title="replace()实现字符串替换"></a>replace()实现字符串替换</h4><h6 id="字符串不可改变"><a href="#字符串不可改变" class="headerlink" title="字符串不可改变"></a>字符串不可改变</h6><h6 id="通过创建新的字符串来实现字符串替换"><a href="#通过创建新的字符串来实现字符串替换" class="headerlink" title="通过创建新的字符串来实现字符串替换"></a>通过创建新的字符串来实现字符串替换</h6><p>整个过程中，实际上我们是创建了新的字符串对象，并指向了变量a，而不是修改了以前的字符串。</p>
+<h4 id="字符串切片slice操作"><a href="#字符串切片slice操作" class="headerlink" title="字符串切片slice操作"></a>字符串切片slice操作</h4><p>切片slice操作可以让我们快速的提取子字符串</p>
+<p>包头不包尾</p>
+<h6 id="标准格式为：-起始偏移量start：终止偏移量end：步长step"><a href="#标准格式为：-起始偏移量start：终止偏移量end：步长step" class="headerlink" title="标准格式为： [起始偏移量start：终止偏移量end：步长step]"></a>标准格式为： [起始偏移量start：终止偏移量end：步长step]</h6><h4 id="split-分割和join-合并"><a href="#split-分割和join-合并" class="headerlink" title="split()分割和join()合并"></a>split()分割和join()合并</h4><h6 id="split-可以基于指定分隔符将字符串分隔成多个子字符串-存储到列表中-。如果不指定分隔符，则默认-使用空白字符-换行符-空格-制表符"><a href="#split-可以基于指定分隔符将字符串分隔成多个子字符串-存储到列表中-。如果不指定分隔符，则默认-使用空白字符-换行符-空格-制表符" class="headerlink" title="split()可以基于指定分隔符将字符串分隔成多个子字符串(存储到列表中)。如果不指定分隔符，则默认 使用空白字符(换行符&#x2F;空格&#x2F;制表符)"></a>split()可以基于指定分隔符将字符串分隔成多个子字符串(存储到列表中)。如果不指定分隔符，则默认 使用空白字符(换行符&#x2F;空格&#x2F;制表符)</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a = &quot;to be or not to be&quot;</span><br><span class="line">&gt;&gt;&gt; a.split()</span><br><span class="line">[&#x27;to&#x27;, &#x27;be&#x27;, &#x27;or&#x27;, &#x27;not&#x27;, &#x27;to&#x27;, &#x27;be&#x27;]————————列表</span><br><span class="line">&gt;&gt;&gt; a.split(&#x27;be&#x27;)</span><br><span class="line">[&#x27;to &#x27;, &#x27; or not to &#x27;, &#x27;&#x27;]</span><br></pre></td></tr></table></figure>
+
+<h6 id="join-的作用和split-作用刚好相反，用于将一系列子字符串连接起来"><a href="#join-的作用和split-作用刚好相反，用于将一系列子字符串连接起来" class="headerlink" title="join()的作用和split()作用刚好相反，用于将一系列子字符串连接起来"></a>join()的作用和split()作用刚好相反，用于将一系列子字符串连接起来</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a = [&#x27;sxt&#x27;,&#x27;sxt100&#x27;,&#x27;sxt200&#x27;]</span><br><span class="line">&gt;&gt;&gt; &#x27;*&#x27;.join(a)</span><br><span class="line">&#x27;sxt*sxt100*sxt200&#x27;</span><br></pre></td></tr></table></figure>
+
+<h4 id="拼接字符串要点"><a href="#拼接字符串要点" class="headerlink" title="拼接字符串要点"></a>拼接字符串要点</h4><p>使用字符串拼接符+，会生成新的字符串对象 不推荐</p>
+<h6 id="推荐使用join函数，因为join函数在拼接字符串之前会计算所有字符串的长度，然后逐一拷贝，仅新建一-次对象。"><a href="#推荐使用join函数，因为join函数在拼接字符串之前会计算所有字符串的长度，然后逐一拷贝，仅新建一-次对象。" class="headerlink" title="推荐使用join函数，因为join函数在拼接字符串之前会计算所有字符串的长度，然后逐一拷贝，仅新建一 次对象。"></a>推荐使用join函数，因为join函数在拼接字符串之前会计算所有字符串的长度，然后逐一拷贝，仅新建一 次对象。</h6><h3 id="字符串驻留机制和字符串比较"><a href="#字符串驻留机制和字符串比较" class="headerlink" title="字符串驻留机制和字符串比较"></a>字符串驻留机制和字符串比较</h3><h4 id="字符串驻留"><a href="#字符串驻留" class="headerlink" title="字符串驻留"></a>字符串驻留</h4><h6 id="仅保存一份相同且不可变字符串的方法，不同的值被存放在字符串驻留池中"><a href="#仅保存一份相同且不可变字符串的方法，不同的值被存放在字符串驻留池中" class="headerlink" title="仅保存一份相同且不可变字符串的方法，不同的值被存放在字符串驻留池中"></a>仅保存一份相同且不可变字符串的方法，不同的值被存放在字符串驻留池中</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a = &quot;abd_33&quot;</span><br><span class="line">&gt;&gt;&gt; b = &quot;abd_33&quot;</span><br><span class="line">&gt;&gt;&gt; a.split()</span><br><span class="line">[&#x27;to&#x27;, &#x27;be&#x27;, &#x27;or&#x27;, &#x27;not&#x27;, &#x27;to&#x27;, &#x27;be&#x27;]————————列表</span><br><span class="line">&gt;&gt;&gt; a.split(&#x27;be&#x27;)</span><br><span class="line">[&#x27;to &#x27;, &#x27; or not to &#x27;, &#x27;&#x27;]</span><br><span class="line">&gt;&gt;&gt; a = [&#x27;sxt&#x27;,&#x27;sxt100&#x27;,&#x27;sxt200&#x27;]</span><br><span class="line">&gt;&gt;&gt; &#x27;*&#x27;.join(a)</span><br><span class="line">&#x27;sxt*sxt100*sxt200&#x27;</span><br><span class="line">&gt;&gt;&gt; a is b</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; c = &quot;dd#&quot;</span><br><span class="line">&gt;&gt;&gt; d = &quot;dd#&quot;</span><br><span class="line">&gt;&gt;&gt; c is d</span><br><span class="line">False</span><br><span class="line">&gt;&gt;&gt; str1 = &quot;aa&quot;</span><br><span class="line">&gt;&gt;&gt; str2 = &quot;bb&quot;</span><br><span class="line">&gt;&gt;&gt; str1+str2 is &quot;aabb&quot;</span><br></pre></td></tr></table></figure>
+
+<h4 id="字符串比较和同一性"><a href="#字符串比较和同一性" class="headerlink" title="字符串比较和同一性"></a>字符串比较和同一性</h4><h6 id="判断是否含有相同的字符"><a href="#判断是否含有相同的字符" class="headerlink" title="&#x3D;&#x3D; &#x2F; !&#x3D;      判断是否含有相同的字符"></a>&#x3D;&#x3D; &#x2F; !&#x3D;      判断是否含有相同的<strong>字符</strong></h6><h6 id="is-not-is-比较的是对象的地址是否相同"><a href="#is-not-is-比较的是对象的地址是否相同" class="headerlink" title="is &#x2F; not is     比较的是对象的地址是否相同"></a>is &#x2F; not is     比较的是对象的地址是否相同</h6><h4 id="成员操作符"><a href="#成员操作符" class="headerlink" title="成员操作符"></a>成员操作符</h4><h6 id="in-not-in-判断某个字符-子字符串-是否存在于字符串中"><a href="#in-not-in-判断某个字符-子字符串-是否存在于字符串中" class="headerlink" title="in &#x2F;not in      判断某个字符(子字符串)是否存在于字符串中"></a>in &#x2F;not in      判断某个字符(子字符串)是否存在于字符串中</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a=&quot;abcdefg&quot;</span><br><span class="line">&gt;&gt;&gt; &quot;abc&quot;in a</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; &quot;abc&quot; not in a</span><br><span class="line">False</span><br></pre></td></tr></table></figure>
+
+<h3 id="字符串常用方法汇总"><a href="#字符串常用方法汇总" class="headerlink" title="字符串常用方法汇总"></a>字符串常用方法汇总</h3><h4 id="常用查找方法"><a href="#常用查找方法" class="headerlink" title="常用查找方法"></a>常用查找方法</h4><h6 id="字符串长度：len（a"><a href="#字符串长度：len（a" class="headerlink" title="字符串长度：len（a)"></a>字符串长度：len（a)</h6><h6 id="以指定字符串开头：a-startwith-‘abcd’"><a href="#以指定字符串开头：a-startwith-‘abcd’" class="headerlink" title="以指定字符串开头：a.startwith(‘abcd’)"></a>以指定字符串开头：a.startwith(‘abcd’)</h6><h6 id="以指定字符串开头：a-startwith-‘xyz’"><a href="#以指定字符串开头：a-startwith-‘xyz’" class="headerlink" title="以指定字符串开头：a.startwith(‘xyz’)"></a>以指定字符串开头：a.startwith(‘xyz’)</h6><h6 id="第一次出现指定字符串的位置：a-find-‘good’"><a href="#第一次出现指定字符串的位置：a-find-‘good’" class="headerlink" title="第一次出现指定字符串的位置：a.find(‘good’)"></a>第一次出现指定字符串的位置：a.find(‘good’)</h6><h6 id="最后一次出现指定字符串的位置：a-rfind-‘good’"><a href="#最后一次出现指定字符串的位置：a-rfind-‘good’" class="headerlink" title="最后一次出现指定字符串的位置：a.rfind(‘good’)"></a>最后一次出现指定字符串的位置：a.rfind(‘good’)</h6><h6 id="指定字符串出现了几次-：a-count-“good”"><a href="#指定字符串出现了几次-：a-count-“good”" class="headerlink" title="指定字符串出现了几次 ：a.count(“good”)"></a>指定字符串出现了几次 ：a.count(“good”)</h6><h6 id="所有字符全是字母或数字：-a-isalnum"><a href="#所有字符全是字母或数字：-a-isalnum" class="headerlink" title="所有字符全是字母或数字： a.isalnum()"></a>所有字符全是字母或数字： a.isalnum()</h6><h4 id="去除首尾信息"><a href="#去除首尾信息" class="headerlink" title="去除首尾信息"></a>去除首尾信息</h4><h6 id="strip-去除字符串首尾指定信息"><a href="#strip-去除字符串首尾指定信息" class="headerlink" title="strip()去除字符串首尾指定信息"></a>strip()去除字符串首尾指定信息</h6><h6 id="lstrip-去除字符串左边指定信息"><a href="#lstrip-去除字符串左边指定信息" class="headerlink" title="lstrip()去除字符串左边指定信息"></a>lstrip()去除字符串左边指定信息</h6><h6 id="rstrip-去除字符串右边指定信息"><a href="#rstrip-去除字符串右边指定信息" class="headerlink" title="rstrip()去除字符串右边指定信息"></a>rstrip()去除字符串右边指定信息</h6><p>去除字符串首尾信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; &quot;*s*x*t*&quot;.strip(&quot;*&quot;)</span><br><span class="line">&#x27;s*x*t&#x27;</span><br><span class="line">&gt;&gt;&gt; &quot;*s*x*t*&quot;.lstrip(&quot;*&quot;)</span><br><span class="line">&#x27;s*x*t*&#x27;</span><br><span class="line">&gt;&gt;&gt; &quot;*s*x*t*&quot;.rstrip(&quot;*&quot;)</span><br><span class="line">&#x27;*s*x*t&#x27;</span><br><span class="line">&gt;&gt;&gt; &quot; sxt &quot;.strip()</span><br><span class="line">&#x27;sxt&#x27;</span><br></pre></td></tr></table></figure>
+
+<h4 id="大小写转换"><a href="#大小写转换" class="headerlink" title="大小写转换"></a>大小写转换</h4><p>产生新的字符串,首字母大写 ：a.capitalize() </p>
+<p>产生新的字符串,每个单词都首字母大写 ：a.title()</p>
+<p>产生新的字符串,所有字符全转成大写： a.upper() </p>
+<p>产生新的字符串,所有字符全转成小写： a.lower() </p>
+<p>产生新的,所有字母大小写转换 ：a.swapcase() </p>
+<h4 id="格式排版"><a href="#格式排版" class="headerlink" title="格式排版"></a>格式排版</h4><p>center()、ljust()、rjust()这三个函数用于对字符串实现排版</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a=&quot;SXT&quot;</span><br><span class="line">&gt;&gt;&gt; a.center(10,&quot;*&quot;)</span><br><span class="line">&#x27;***SXT****&#x27;</span><br><span class="line">&gt;&gt;&gt; a.center(10)</span><br><span class="line">&#x27; SXT &#x27;</span><br><span class="line">&gt;&gt;&gt; a.ljust(10,&quot;*&quot;)</span><br><span class="line">&#x27;SXT*******&#x27;</span><br></pre></td></tr></table></figure>
+
+<h4 id="其他方法"><a href="#其他方法" class="headerlink" title="其他方法"></a>其他方法</h4><h6 id="isalnum-是否为字母或数字"><a href="#isalnum-是否为字母或数字" class="headerlink" title="isalnum() 是否为字母或数字"></a>isalnum() 是否为字母或数字</h6><h6 id="isalpha-检测字符串是否只由字母组成-含汉字-。"><a href="#isalpha-检测字符串是否只由字母组成-含汉字-。" class="headerlink" title="isalpha() 检测字符串是否只由字母组成(含汉字)。"></a>isalpha() 检测字符串是否只由字母组成(含汉字)。</h6><h6 id="isdigit-检测字符串是否只由数字组成。"><a href="#isdigit-检测字符串是否只由数字组成。" class="headerlink" title="isdigit() 检测字符串是否只由数字组成。"></a>isdigit() 检测字符串是否只由数字组成。</h6><h6 id="isspace-检测是否为空白符"><a href="#isspace-检测是否为空白符" class="headerlink" title="isspace() 检测是否为空白符"></a>isspace() 检测是否为空白符</h6><h6 id="isupper-是否为大写字母"><a href="#isupper-是否为大写字母" class="headerlink" title="isupper() 是否为大写字母"></a>isupper() 是否为大写字母</h6><h6 id="islower-是否为小写字母"><a href="#islower-是否为小写字母" class="headerlink" title="islower() 是否为小写字母"></a>islower() 是否为小写字母</h6><h3 id="字符串的格式化"><a href="#字符串的格式化" class="headerlink" title="字符串的格式化"></a>字符串的格式化</h3><h4 id="字符串的格式化-1"><a href="#字符串的格式化-1" class="headerlink" title="字符串的格式化"></a>字符串的格式化</h4><p>Python2.6 开始，新增了一种格式化字符串的函数 str.format()，它增强了字符串格式化的功能。 基本语法是通过 {} 和 : 来代替以前的 % </p>
+<h6 id="format-函数可以接受不限个参数，位置可以不按顺序"><a href="#format-函数可以接受不限个参数，位置可以不按顺序" class="headerlink" title="format 函数可以接受不限个参数，位置可以不按顺序"></a>format 函数可以接受不限个参数，位置可以不按顺序</h6><blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a=&quot;我的名字是：&#123;0&#125;,年龄是：&#123;1&#125;&quot;</span><br><span class="line">&gt;&gt;&gt; a.format(&quot;韩明&quot;,20)</span><br><span class="line">&#x27;我的名字是：韩明,年龄是：20&#x27;</span><br><span class="line">&gt;&gt;&gt; a.format(&quot;韩知宜&quot;,8)</span><br><span class="line">&#x27;我的名字是：韩知宜,年龄是：8&#x27;</span><br><span class="line">&gt;&gt;&gt; b=&quot; 我的名字是：&#123;name&#125;,我今年&#123;age&#125;岁了，&#123;name&#125;在金马小学上学&quot;</span><br><span class="line">&gt;&gt;&gt; b.format(name=&quot;韩知宜&quot;,age=8)</span><br><span class="line">&#x27; 我的名字是：韩知宜,我今年8岁了，韩知宜在金马小学上学&#x27;</span><br><span class="line">我们可以通过&#123;索引&#125;/&#123;参数名&#125;，直接映射参数值，实现对字符串的格式化，非常方便。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="填充与对齐"><a href="#填充与对齐" class="headerlink" title="填充与对齐"></a>填充与对齐</h4><h6 id="填充常跟对齐一起使用-、分别是居中、左对齐、右对齐，"><a href="#填充常跟对齐一起使用-、分别是居中、左对齐、右对齐，" class="headerlink" title="填充常跟对齐一起使用 ^、&lt;、&gt;分别是居中、左对齐、右对齐，"></a>填充常跟对齐一起使用 ^、&lt;、&gt;分别是居中、左对齐、右对齐，</h6><h6 id="后面带宽度-号后面带填充的字符，只能是一个字符，不指定的话默认是用空格填充"><a href="#后面带宽度-号后面带填充的字符，只能是一个字符，不指定的话默认是用空格填充" class="headerlink" title="后面带宽度:号后面带填充的字符，只能是一个字符，不指定的话默认是用空格填充"></a>后面带宽度:号后面带填充的字符，只能是一个字符，不指定的话默认是用空格填充</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; &quot;&#123;:*&gt;8&#125;&quot;.format(&quot;245&quot;)</span><br><span class="line">&#x27;*****245&#x27;</span><br><span class="line">&gt;&gt;&gt; &quot;我是&#123;0&#125;,我喜欢数字&#123;1:*^8&#125;&quot;.format(&quot;韩明&quot;,&quot;666&quot;)</span><br><span class="line">&#x27;我是韩明,我喜欢数字**666***</span><br></pre></td></tr></table></figure>
+
+<h4 id="数字格式化"><a href="#数字格式化" class="headerlink" title="数字格式化"></a>数字格式化</h4><h6 id="浮点数通过f，整数通过d进行需要的格式化"><a href="#浮点数通过f，整数通过d进行需要的格式化" class="headerlink" title="浮点数通过f，整数通过d进行需要的格式化"></a>浮点数通过f，整数通过d进行需要的格式化</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a = &quot;我是&#123;0&#125;，我的存款有&#123;1:.2f&#125;&quot;</span><br><span class="line">&gt;&gt;&gt; a.format(&quot;韩明&quot;,3888.234342)</span><br><span class="line">&#x27;我是韩明，我的存款有3888.23&#x27;</span><br></pre></td></tr></table></figure>
+
+<h3 id="可变字符串"><a href="#可变字符串" class="headerlink" title="可变字符串"></a>可变字符串</h3><h6 id="我们需要原地修改字符串，可以使用io-StringIO对象或array模块"><a href="#我们需要原地修改字符串，可以使用io-StringIO对象或array模块" class="headerlink" title="我们需要原地修改字符串，可以使用io.StringIO对象或array模块"></a>我们需要原地修改字符串，可以使用io.StringIO对象或array模块</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import io</span><br><span class="line">&gt;&gt;&gt; s=&quot;hello sxt&quot;</span><br><span class="line">&gt;&gt;&gt; sio=io.StringIO(s)</span><br><span class="line">&gt;&gt;&gt; sio</span><br><span class="line">&lt;_io.StringIO object at 0x000001D0C5D16048&gt;</span><br><span class="line">&gt;&gt;&gt; sio.getvalue()</span><br><span class="line">&#x27;hello sxt&#x27;</span><br><span class="line">&gt;&gt;&gt; sio.seek(7)#指针</span><br><span class="line">7</span><br><span class="line">&gt;&gt;&gt; sio.write(&quot;g&quot;)</span><br><span class="line">1</span><br><span class="line">&gt;&gt;&gt; sio.getvalue()</span><br><span class="line">&#x27;hello sgt&#x27;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left "
+    
+      href="/2023/09/22/%E9%9B%86%E5%90%88/"
+      title="python——集合"
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+      
+        python——集合
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/2023/09/19/hello-world/"
+      title="Hello World"
+     >
+
+    <p class="title-text">
+      
+        Hello World
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+ 
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2023 小羊<br>
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & Theme <a target="_blank" rel="noopener" href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/js/light-dark-switch.js"></script>
+</body>
+</html>

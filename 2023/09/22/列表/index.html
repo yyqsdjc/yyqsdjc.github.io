@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="true" > 
+<link href="/fontawesome/css/fontawesome.css" rel="stylesheet">
+<link href="/fontawesome/css/brands.css" rel="stylesheet">
+<link href="/fontawesome/css/solid.css" rel="stylesheet">
+<script src="/js/color.global.min.js" ></script>
+<script src="/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+
+  
+  <title>python——列表 | 小羊不乖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
+  <meta name="description" content="列表1 定义12345用于存储任意数目、任意类型的数据集合。        List （列表）是 Python 内置的一种数据类型。标准语法格式： 1. a &#x3D; [10,20,30,40]2. a &#x3D; [10,20,‘abc’,True]  是一种有序的集合，可以随时增加或删除其中的元素。标识是中括号[ ]。2 创建2.1 基本语法创建12a&#x3D;[10,20,&amp;#x27;yangyaqi&amp;#x27;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python——列表">
+<meta property="og:url" content="https://yyqsdjc.github.io/2023/09/22/%E5%88%97%E8%A1%A8/index.html">
+<meta property="og:site_name" content="小羊不乖">
+<meta property="og:description" content="列表1 定义12345用于存储任意数目、任意类型的数据集合。        List （列表）是 Python 内置的一种数据类型。标准语法格式： 1. a &#x3D; [10,20,30,40]2. a &#x3D; [10,20,‘abc’,True]  是一种有序的集合，可以随时增加或删除其中的元素。标识是中括号[ ]。2 创建2.1 基本语法创建12a&#x3D;[10,20,&amp;#x27;yangyaqi&amp;#x27;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-09-22T11:35:10.017Z">
+<meta property="article:modified_time" content="2023-09-22T14:20:03.813Z">
+<meta property="article:author" content="小羊">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="小羊不乖" type="application/atom+xml">
+  
+  
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-192.png" sizes="192x192">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-192.png" sizes="192x192">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  
+  
+    
+<div id="banner" class="">
+  <img src="/assets/bj3.jpg" itemprop="image">
+  <div id="banner-dim"></div>
+</div>
+ 
+   
+  <div id="main-grid" class="shadow   ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/">
+      <div id="vivia-logo">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <div>小羊不乖 </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/">首页</a>
+    
+      <a class="main-nav-link" href="/archives">归档</a>
+    
+      <a class="main-nav-link" href="/about">关于</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
+      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
+    </a>
+    
+      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/atom.xml" title="RSS 订阅">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M198-120q-25.846 0-44.23-18.384-18.384-18.385-18.384-44.23 0-25.846 18.384-44.23 18.384-18.385 44.23-18.385 25.846 0 44.23 18.385 18.384 18.384 18.384 44.23 0 25.845-18.384 44.23Q223.846-120 198-120Zm538.385 0q-18.846 0-32.923-13.769-14.076-13.769-15.922-33.23-8.692-100.616-51.077-188.654-42.385-88.039-109.885-155.539-67.5-67.501-155.539-109.885Q283-663.462 182.385-672.154q-19.461-1.846-33.23-16.23-13.769-14.385-13.769-33.846t14.076-32.922q14.077-13.461 32.923-12.23 120.076 8.692 226.038 58.768 105.961 50.077 185.73 129.846 79.769 79.769 129.846 185.731 50.077 105.961 58.769 226.038 1.231 18.846-12.538 32.922Q756.461-120 736.385-120Zm-252 0q-18.231 0-32.423-13.461t-18.653-33.538Q418.155-264.23 348.886-333.5q-69.27-69.27-166.501-84.423-20.077-4.462-33.538-18.961-13.461-14.5-13.461-33.346 0-19.076 13.884-33.23 13.884-14.153 33.115-10.922 136.769 15.384 234.384 112.999 97.615 97.615 112.999 234.384 3.231 19.23-10.538 33.115Q505.461-120 484.385-120Z"/></svg>
+      </a>
+    
+    <div id="nav-menu-btn" class="nav-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/">首页</a>
+    
+      <a class="nav-dropdown-link" href="/archives">归档</a>
+    
+      <a class="nav-dropdown-link" href="/about">关于</a>
+    
+    
+      <a class="nav-dropdown-link" href="/atom.xml" title="RSS 订阅">RSS</a>
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=/assets/avatar.jpg></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">小羊 </div>
+      <div class="dot"></div>
+      <div class="subtitle">其他网址 </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://blog.csdn.net/shisanxiang_?type=blog" title="CSDN"><i class="fa-brands fa-solid fa-c fa-beat"></i></a>
+        
+          <a class="link-btn" href="https://yyqsdjc.github.io/" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+
+
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">分类</h3>
+      <div class="category-box">
+            <a class="category-link" href="/categories/programming/">
+                编程
+                <div class="category-count">2</div>
+            </a>
+        </div>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">标签</h3>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">归档</h3>
+      
+      
+        <a class="archive-link" href="/archives/2023/09 ">
+          九月 2023 
+          <div class="archive-count">6 </div>
+        </a>
+      
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">最新文章</h3>
+      <ul>
+        
+          <a class="recent-link" href="/2023/09/22/%E5%AD%97%E5%85%B8/" title="python——字典" >
+            <div class="recent-link-text">
+              python——字典
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2023/09/22/%E5%85%83%E7%BB%84/" title="python——元组" >
+            <div class="recent-link-text">
+              python——元组
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2023/09/22/%E5%88%97%E8%A1%A8/" title="python——列表" >
+            <div class="recent-link-text">
+              python——列表
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2023/09/22/%E9%9B%86%E5%90%88/" title="python——集合" >
+            <div class="recent-link-text">
+              python——集合
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2023/09/22/%E5%AD%97%E7%AC%A6%E4%B8%B2/" title="python——字符串" >
+            <div class="recent-link-text">
+              python——字符串
+            </div>
+          </a>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+<article id="post-列表" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        python——列表
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2023-09-22T11:35:10.017Z" itemprop="datePublished">2023-09-22</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/programming/">编程</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            1.7k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <h1 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h1><h2 id="1-定义"><a href="#1-定义" class="headerlink" title="1 定义"></a>1 定义</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">用于存储任意数目、任意类型的数据集合。        </span><br><span class="line"><span class="type">List</span> （列表）是 Python 内置的一种数据类型。</span><br><span class="line">标准语法格式： </span><br><span class="line"><span class="number">1.</span> a = [<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>,<span class="number">40</span>]</span><br><span class="line"><span class="number">2.</span> a = [<span class="number">10</span>,<span class="number">20</span>,‘abc’,<span class="literal">True</span>]</span><br></pre></td></tr></table></figure>
+
+<h3 id="是一种有序的集合，可以随时增加或删除其中的元素。标识是中括号-。"><a href="#是一种有序的集合，可以随时增加或删除其中的元素。标识是中括号-。" class="headerlink" title="是一种有序的集合，可以随时增加或删除其中的元素。标识是中括号[ ]。"></a>是一种有序的集合，可以随时增加或删除其中的元素。标识是中括号[ ]。</h3><h2 id="2-创建"><a href="#2-创建" class="headerlink" title="2 创建"></a>2 创建</h2><h3 id="2-1-基本语法创建"><a href="#2-1-基本语法创建" class="headerlink" title="2.1 基本语法创建"></a>2.1 基本语法创建</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a=[<span class="number">10</span>,<span class="number">20</span>,<span class="string">&#x27;yangyaqi&#x27;</span>,<span class="string">&#x27;石家庄学院&#x27;</span>,<span class="literal">True</span>]</span><br><span class="line">a</span><br></pre></td></tr></table></figure>
+
+<p>[10, 20, ‘yangyaqi’,’石家庄学院’,True]</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a=[]</span><br></pre></td></tr></table></figure>
+
+<p>[]</p>
+<h3 id="2-2-list（）函数创建列表"><a href="#2-2-list（）函数创建列表" class="headerlink" title="2.2 list（）函数创建列表"></a>2.2 list（）函数创建列表</h3><blockquote>
+<p>使用list()可以将任何可迭代的数据转化成列表。</p>
+<p><strong>在使用</strong> <strong>list()</strong> <strong>函数创建列表时，一定要注意双括号。</strong></p>
+<p>在Python中，我们可以使用 list() 函数将字符串、元组、字典和集合等其他类似对象转换为列表</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b=<span class="built_in">list</span>() <span class="comment">#创建空列表</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b=<span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">10</span>))</span><br><span class="line">b</span><br></pre></td></tr></table></figure>
+
+<p>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">this_list = <span class="built_in">list</span>((<span class="string">&#x27;apple&#x27;</span>, <span class="string">&#x27;banana&#x27;</span>, <span class="string">&#x27;cherry&#x27;</span>))</span><br><span class="line">this_list</span><br></pre></td></tr></table></figure>
+
+<p>[‘apple’, ‘banana’, ‘cherry’]</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">this_list=<span class="built_in">list</span>(<span class="string">&#x27;apple&#x27;</span>)</span><br><span class="line">this_list</span><br></pre></td></tr></table></figure>
+
+<p>[‘a’, ‘p’, ‘p’, ‘l’, ‘e’]</p>
+<h2 id="3-常用方法"><a href="#3-常用方法" class="headerlink" title="3 常用方法"></a>3 常用方法</h2><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>要点</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>list.append(x)</td>
+<td>增加元素</td>
+<td align="left">将元素x增加到列表list尾部</td>
+</tr>
+<tr>
+<td>list.extend(aList)</td>
+<td>增加元素</td>
+<td align="left">将列表alist所有元素加到列表list尾部</td>
+</tr>
+<tr>
+<td>list.insert(index,x)</td>
+<td>增加元素</td>
+<td align="left">在列表list指定位置index处插入元素x</td>
+</tr>
+<tr>
+<td>list.remove(x)</td>
+<td>删除元素</td>
+<td align="left">在列表list中删除首次出现的指定元素x</td>
+</tr>
+<tr>
+<td>list.pop(lindex])</td>
+<td>删除元素</td>
+<td align="left">删除并返回列表list指定为止index处的元素，默认是最后一个元素</td>
+</tr>
+<tr>
+<td>list.clear()</td>
+<td>删除所有元素</td>
+<td align="left">删除列表所有元素，并不是删除列表对象</td>
+</tr>
+<tr>
+<td>list.index(x)</td>
+<td>访问元素</td>
+<td align="left">返回第一个x的索引位置，若不存在x元素抛出异常</td>
+</tr>
+<tr>
+<td>list.count(x)</td>
+<td>计数</td>
+<td align="left">返回指定元素x在列表list中出现的次数</td>
+</tr>
+<tr>
+<td>len(list)</td>
+<td>列表长度</td>
+<td align="left">返回列表中包含元素的个数</td>
+</tr>
+<tr>
+<td>list.reverse()</td>
+<td>翻转列表</td>
+<td align="left">所有元素原地翻转</td>
+</tr>
+<tr>
+<td>list.sort()</td>
+<td>排序</td>
+<td align="left">所有元素原地排序</td>
+</tr>
+<tr>
+<td>list.copy()</td>
+<td>浅拷贝</td>
+<td align="left">返回列表对象的浅拷贝</td>
+</tr>
+</tbody></table>
+<h2 id="4-操作"><a href="#4-操作" class="headerlink" title="4 操作"></a>4 操作</h2><h3 id="4-1-元素层面"><a href="#4-1-元素层面" class="headerlink" title="4.1 元素层面"></a>4.1 元素层面</h3><h4 id="4-1-1-元素的提取"><a href="#4-1-1-元素的提取" class="headerlink" title="4.1.1 元素的提取"></a>4.1.1 元素的提取</h4><blockquote>
+<ol>
+<li><p>偏移量：<br>列表的偏移量从0开始<br>列表名后带偏移量的中括号，对应相应位置的元素</p>
+</li>
+<li><p>通过偏移量对列表进行定位</p>
+</li>
+<li><p>在嵌套的列表中也是如此列表</p>
+</li>
+</ol>
+</blockquote>
+<h4 id="4-1-2-元素的修改"><a href="#4-1-2-元素的修改" class="headerlink" title="4.1.2 元素的修改"></a>4.1.2 元素的修改</h4><h5 id="使用赋值语句修改"><a href="#使用赋值语句修改" class="headerlink" title="使用赋值语句修改"></a>使用赋值语句修改</h5><h4 id="4-1-3-元素的增加"><a href="#4-1-3-元素的增加" class="headerlink" title="4.1.3 元素的增加"></a>4.1.3 元素的增加</h4><blockquote>
+<p>+<strong>运算符操作</strong></p>
+<p>并不是真正的尾部添加元素，而是创建新的列表对象；将原列表的元素和新列表的元素依次复制到新的列表对象中。这样，会涉及大量的复制操作，对于操作大量元素不建议使用。     </p>
+<p><strong>append.函数</strong> </p>
+<p>原地修改列表对象，是真正的列表尾部添加新的元素，速度最快，推荐使用。</p>
+<p><strong>extend()方法</strong></p>
+<p>将目标列表的所有元素添加到本列表的尾部，属于原地操作，不创建新的列表对象。</p>
+<p><strong>insert()插入元素</strong></p>
+<p>使用insert()方法可以将指定的元素插入到列表对象的任意制定位置。这样会让插入位置后面所有的元素进行移动，会影响处理速度。涉及大量元素时，尽量避免使用。类似发生这种移动的函数还有：remove()、pop()、del()，它们在删除非尾部元素时也会发生操作位置后面元素的移动。</p>
+<p><strong>extend()方法</strong></p>
+<p>将目标列表的所有元素添加到本列表的尾部，属于原地操作，不创建新的列表对象。      </p>
+</blockquote>
+<h6 id="功能-括号里放一个元素，可将该元素添加到列表末尾"><a href="#功能-括号里放一个元素，可将该元素添加到列表末尾" class="headerlink" title="功能:括号里放一个元素，可将该元素添加到列表末尾"></a>功能:括号里放一个元素，可将该元素添加到列表末尾</h6><h6 id="格式为-列表名append0"><a href="#格式为-列表名append0" class="headerlink" title="格式为:列表名append0"></a>格式为:列表名append0</h6><h4 id="4-1-4-元素的删除"><a href="#4-1-4-元素的删除" class="headerlink" title="4.1.4 元素的删除"></a>4.1.4 元素的删除</h4><blockquote>
+<p><strong>del方法</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a=[<span class="number">100</span>,<span class="number">200</span>,<span class="number">888</span>,<span class="number">300</span>,<span class="number">400</span>]</span><br><span class="line"><span class="keyword">del</span> a[<span class="number">1</span>]</span><br><span class="line">a</span><br></pre></td></tr></table></figure>
+
+<p>[100, 888, 300, 400]</p>
+<p><strong>pop方法</strong></p>
+<p>删除并返回指定位置元素，如果未指定位置则默认操作列表最后一个元素。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a=[<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>,<span class="number">40</span>,<span class="number">50</span>]</span><br><span class="line">a.pop()</span><br><span class="line">a</span><br></pre></td></tr></table></figure>
+
+<p>[10, 20, 30, 40]</p>
+<p><strong>remove（）方法</strong></p>
+<p>删除首次出现的指定元素，若不存在该元素抛出异常。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>,<span class="number">40</span>,<span class="number">50</span>,<span class="number">20</span>,<span class="number">30</span>,<span class="number">20</span>,<span class="number">30</span>]</span><br><span class="line">a.remove(<span class="number">20</span>)  <span class="comment">#这里的20是数据，不是索引</span></span><br><span class="line">a</span><br></pre></td></tr></table></figure>
+
+<p>[10, 30, 40, 50, 20, 30, 20, 30]</p>
+</blockquote>
+<h6 id="功能-删除列表元素"><a href="#功能-删除列表元素" class="headerlink" title="功能:删除列表元素"></a>功能:删除列表元素</h6><h6 id="格式为-del-列表名偏移量"><a href="#格式为-del-列表名偏移量" class="headerlink" title="格式为: del 列表名偏移量"></a>格式为: del 列表名<a href="%E6%B3%A8%E6%84%8F%EF%BC%8C%E4%B8%AD%E9%97%B4%E6%9C%89%E7%A9%BA%E6%A0%BC">偏移量</a></h6><h3 id="4-2-列表层面"><a href="#4-2-列表层面" class="headerlink" title="4.2 列表层面"></a>4.2 列表层面</h3><h4 id="4-2-1-列表的切片"><a href="#4-2-1-列表的切片" class="headerlink" title="4.2.1 列表的切片"></a>4.2.1 列表的切片</h4><h6 id="从列表中提取一段连续的数据，生成一个新列表"><a href="#从列表中提取一段连续的数据，生成一个新列表" class="headerlink" title="从列表中提取一段连续的数据，生成一个新列表"></a>从列表中提取一段连续的数据，生成一个新列表</h6><h5 id="通过偏移量对列表范围进行定位"><a href="#通过偏移量对列表范围进行定位" class="headerlink" title="通过偏移量对列表范围进行定位"></a>通过偏移量对列表范围进行定位</h5><h6 id="1-3-的范围为1"><a href="#1-3-的范围为1" class="headerlink" title="[1:3]的范围为1&lt;&#x3D;x&lt;3，包头不包尾"></a>[1:3]的范围为1&lt;&#x3D;x&lt;3，包头不包尾</h6><h6 id="冒号左右的值可不填，冒号某侧不取值则取到底"><a href="#冒号左右的值可不填，冒号某侧不取值则取到底" class="headerlink" title="冒号左右的值可不填，冒号某侧不取值则取到底"></a>冒号左右的值可不填，冒号某侧不取值则取到底</h6><h4 id="4-2-2-列表的修改"><a href="#4-2-2-列表的修改" class="headerlink" title="4.2.2 列表的修改"></a>4.2.2 列表的修改</h4><h5 id="直接使用赋值语句"><a href="#直接使用赋值语句" class="headerlink" title="直接使用赋值语句"></a>直接使用赋值语句</h5><h4 id="4-2-3-列表的增加"><a href="#4-2-3-列表的增加" class="headerlink" title="4.2.3 列表的增加"></a>4.2.3 列表的增加</h4><h5 id="使用运算符号"><a href="#使用运算符号" class="headerlink" title="使用运算符号 +"></a>使用运算符号 +</h5><h5 id="注意-符号-只能用于列表间合并"><a href="#注意-符号-只能用于列表间合并" class="headerlink" title="注意:符号+只能用于列表间合并"></a>注意:符号+只能用于列表间合并</h5><h4 id="4-2-4-列表的删除"><a href="#4-2-4-列表的删除" class="headerlink" title="4.2.4 列表的删除"></a>4.2.4 列表的删除</h4><h5 id="使用del"><a href="#使用del" class="headerlink" title="使用del"></a>使用del</h5><h4 id="4-2-5-列表的遍历"><a href="#4-2-5-列表的遍历" class="headerlink" title="4.2.5 列表的遍历"></a>4.2.5 列表的遍历</h4><blockquote>
+<pre><code>for obj  in  listObj:
+    print(obj)      
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> a:</span><br><span class="line">    <span class="built_in">print</span>(x,end=<span class="string">&quot;#&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>10#20#30#40#50#20#30#20#30#</p>
+</blockquote>
+<h4 id="4-2-6-复制列表所有的元素到新列表对象"><a href="#4-2-6-复制列表所有的元素到新列表对象" class="headerlink" title="4.2.6 复制列表所有的元素到新列表对象"></a>4.2.6 复制列表所有的元素到新列表对象</h4><blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">list1 = [<span class="number">30</span>,<span class="number">40</span>,<span class="number">50</span>]</span><br><span class="line">list2 = list1</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">list1 = [<span class="number">30</span>,<span class="number">40</span>,<span class="number">50</span>]</span><br><span class="line">list2 = [] + list1</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="4-2-7-列表排序"><a href="#4-2-7-列表排序" class="headerlink" title="4.2.7 列表排序"></a>4.2.7 列表排序</h4><blockquote>
+<p>sort方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a.sort()</span><br></pre></td></tr></table></figure>
+
+<p>sorted方法：返回新列表，不对原列表做修改。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="built_in">sorted</span>(a)</span><br></pre></td></tr></table></figure>
+
+<p>reversed()返回迭代器：支持进行逆序排列，不对原列表做任何修改，只是返回一个逆序排列的迭代器对象。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c = <span class="built_in">reversed</span>(a)</span><br></pre></td></tr></table></figure>
+
+
+</blockquote>
+<h2 id="5-range（-创建整数列表"><a href="#5-range（-创建整数列表" class="headerlink" title="5 range（)创建整数列表"></a>5 range（)创建整数列表</h2><blockquote>
+<p>range()可以帮助我们非常方便的创建整数列表，这在开发中及其有用。为：<br>start参数：可选，表示起始数字。默认是0<br>end参数：必选，表示结尾数字。<br>step参数：可选，表示步长，默认为1<br>python3中range()返回的是一个range对象，而不是列表。我们需要通过list()方法将其转换成列表对象。</p>
+</blockquote>
+<h3 id="语法格式：range-start-end-step"><a href="#语法格式：range-start-end-step" class="headerlink" title="语法格式：range([start,] end [,step])"></a>语法格式：range([start,] end [,step])</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">3</span>,<span class="number">15</span>,<span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+
+<p>[3, 5, 7, 9, 11, 13]</p>
+<h2 id="6-列表推导式"><a href="#6-列表推导式" class="headerlink" title="6 列表推导式"></a>6 列表推导式</h2><blockquote>
+<p>列表推导式是 Python 中一种简洁而强大的工具，用于创建列表对象的一种快捷方式。它允许我们以一行代码生成列表，并且可以在生成过程中对元素进行筛选、变换和组合。</p>
+</blockquote>
+<h3 id="语法格式"><a href="#语法格式" class="headerlink" title="语法格式"></a>语法格式</h3><h4 id="expression1-if-condition-else-expression2-for-item-in-iterable"><a href="#expression1-if-condition-else-expression2-for-item-in-iterable" class="headerlink" title="[expression1 if condition else expression2 for item in iterable]"></a>[expression1 if condition else expression2 for item in iterable]</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">result = []</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> iterable:</span><br><span class="line">    <span class="keyword">if</span> condition1:</span><br><span class="line">        result.append(expression1(item))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        result.append(expression2(item))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">even_odd = [<span class="string">&#x27;even&#x27;</span> <span class="keyword">if</span> num % <span class="number">2</span> == <span class="number">0</span> <span class="keyword">else</span> <span class="string">&#x27;odd&#x27;</span> <span class="keyword">for</span> num <span class="keyword">in</span> numbers]</span><br><span class="line"><span class="built_in">print</span>(even_odd) </span><br></pre></td></tr></table></figure>
+
+<p> [‘odd’, ‘even’, ‘odd’, ‘even’, ‘odd’]</p>
+<h4 id="expression-for-item-in-iterable"><a href="#expression-for-item-in-iterable" class="headerlink" title="[expression for item in iterable]"></a>[expression for item in iterable]</h4><blockquote>
+<p>其中，expression 是生成列表元素的计算表达式，item 是可迭代对象中的每个元素，iterable 是一个可迭代对象（如列表、元组、集合等），它相当于：</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">result = []</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> iterable:</span><br><span class="line">    result.append(expression(item))</span><br></pre></td></tr></table></figure>
+
+<h4 id="expression-for-item-in-iterable-if-condition"><a href="#expression-for-item-in-iterable-if-condition" class="headerlink" title="[expression for item in iterable if condition]"></a>[expression for item in iterable if condition]</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">result = []</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> iterable:</span><br><span class="line">    <span class="keyword">if</span> condition:</span><br><span class="line">        result.append(expression(item))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#筛选偶数的列表：</span></span><br><span class="line">even_numbers = [x <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">11</span>) <span class="keyword">if</span> x % <span class="number">2</span> == <span class="number">0</span>]</span><br><span class="line"><span class="built_in">print</span>(even_numbers)</span><br></pre></td></tr></table></figure>
+
+<p>[2, 4, 6, 8, 10]</p>
+<h2 id="7-多维列表"><a href="#7-多维列表" class="headerlink" title="7 多维列表"></a>7 多维列表</h2><blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a=[</span><br><span class="line">    [<span class="string">&quot;st1&quot;</span>,<span class="number">18</span>,<span class="number">30000</span>,<span class="string">&quot;北京&quot;</span>],</span><br><span class="line">    [<span class="string">&quot;st2&quot;</span>,<span class="number">19</span>,<span class="number">20000</span>,<span class="string">&quot;上海&quot;</span>],</span><br><span class="line">    [<span class="string">&quot;st3&quot;</span>,<span class="number">20</span>,<span class="number">10000</span>,<span class="string">&quot;深圳&quot;</span>],]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#嵌套循环打印二维列表所有的数</span></span><br><span class="line"><span class="keyword">for</span> m <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):</span><br><span class="line">    <span class="keyword">for</span> n <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">        <span class="built_in">print</span>(a[m][n],end=<span class="string">&quot;\t&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>()<span class="comment">#打印完一行，换行</span></span><br></pre></td></tr></table></figure>
+
+<p>st1	18	30000	北京	<br>st2	19	20000	上海	<br>st3	20	10000	深圳</p>
+</blockquote>
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left "
+    
+      href="/2023/09/22/%E5%85%83%E7%BB%84/"
+      title="python——元组"
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+      
+        python——元组
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/2023/09/22/%E9%9B%86%E5%90%88/"
+      title="python——集合"
+     >
+
+    <p class="title-text">
+      
+        python——集合
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+ 
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2023 小羊<br>
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & Theme <a target="_blank" rel="noopener" href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/js/light-dark-switch.js"></script>
+</body>
+</html>

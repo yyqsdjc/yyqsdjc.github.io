@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="true" > 
+<link href="/fontawesome/css/fontawesome.css" rel="stylesheet">
+<link href="/fontawesome/css/brands.css" rel="stylesheet">
+<link href="/fontawesome/css/solid.css" rel="stylesheet">
+<script src="/js/color.global.min.js" ></script>
+<script src="/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+
+  
+  <title>python——字典 | 小羊不乖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
+  <meta name="description" content="字典1. 定义字典是“键值对”的无序可变序列12a&#x3D;&amp;#123;&amp;#x27;name&amp;#x27;:&amp;#x27;xybg&amp;#x27;,&amp;#x27;age&amp;#x27;:&amp;#x27;20&amp;#x27;,&amp;#x27;sex&amp;#x27;:&amp;#x27;women&amp;#x27;&amp;#125;a  {‘name’: ‘xybg’, ‘age’: ‘20’, ‘sex’: ‘women’}  字典中的每个元素都是一个“键">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python——字典">
+<meta property="og:url" content="https://yyqsdjc.github.io/2023/09/22/%E5%AD%97%E5%85%B8/index.html">
+<meta property="og:site_name" content="小羊不乖">
+<meta property="og:description" content="字典1. 定义字典是“键值对”的无序可变序列12a&#x3D;&amp;#123;&amp;#x27;name&amp;#x27;:&amp;#x27;xybg&amp;#x27;,&amp;#x27;age&amp;#x27;:&amp;#x27;20&amp;#x27;,&amp;#x27;sex&amp;#x27;:&amp;#x27;women&amp;#x27;&amp;#125;a  {‘name’: ‘xybg’, ‘age’: ‘20’, ‘sex’: ‘women’}  字典中的每个元素都是一个“键">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-09-22T11:35:10.019Z">
+<meta property="article:modified_time" content="2023-09-22T11:43:27.819Z">
+<meta property="article:author" content="小羊">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="小羊不乖" type="application/atom+xml">
+  
+  
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-192.png" sizes="192x192">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-192.png" sizes="192x192">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  
+  
+    
+<div id="banner" class="">
+  <img src="/assets/bj3.jpg" itemprop="image">
+  <div id="banner-dim"></div>
+</div>
+ 
+   
+  <div id="main-grid" class="shadow   ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/">
+      <div id="vivia-logo">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <div>小羊不乖 </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/">首页</a>
+    
+      <a class="main-nav-link" href="/archives">归档</a>
+    
+      <a class="main-nav-link" href="/about">关于</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
+      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
+    </a>
+    
+      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/atom.xml" title="RSS 订阅">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M198-120q-25.846 0-44.23-18.384-18.384-18.385-18.384-44.23 0-25.846 18.384-44.23 18.384-18.385 44.23-18.385 25.846 0 44.23 18.385 18.384 18.384 18.384 44.23 0 25.845-18.384 44.23Q223.846-120 198-120Zm538.385 0q-18.846 0-32.923-13.769-14.076-13.769-15.922-33.23-8.692-100.616-51.077-188.654-42.385-88.039-109.885-155.539-67.5-67.501-155.539-109.885Q283-663.462 182.385-672.154q-19.461-1.846-33.23-16.23-13.769-14.385-13.769-33.846t14.076-32.922q14.077-13.461 32.923-12.23 120.076 8.692 226.038 58.768 105.961 50.077 185.73 129.846 79.769 79.769 129.846 185.731 50.077 105.961 58.769 226.038 1.231 18.846-12.538 32.922Q756.461-120 736.385-120Zm-252 0q-18.231 0-32.423-13.461t-18.653-33.538Q418.155-264.23 348.886-333.5q-69.27-69.27-166.501-84.423-20.077-4.462-33.538-18.961-13.461-14.5-13.461-33.346 0-19.076 13.884-33.23 13.884-14.153 33.115-10.922 136.769 15.384 234.384 112.999 97.615 97.615 112.999 234.384 3.231 19.23-10.538 33.115Q505.461-120 484.385-120Z"/></svg>
+      </a>
+    
+    <div id="nav-menu-btn" class="nav-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/">首页</a>
+    
+      <a class="nav-dropdown-link" href="/archives">归档</a>
+    
+      <a class="nav-dropdown-link" href="/about">关于</a>
+    
+    
+      <a class="nav-dropdown-link" href="/atom.xml" title="RSS 订阅">RSS</a>
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=/assets/avatar.jpg></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">小羊 </div>
+      <div class="dot"></div>
+      <div class="subtitle">其他网址 </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://blog.csdn.net/shisanxiang_?type=blog" title="CSDN"><i class="fa-brands fa-solid fa-c fa-beat"></i></a>
+        
+          <a class="link-btn" href="https://yyqsdjc.github.io/" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+
+
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">分类</h3>
+      <div class="category-box">
+            <a class="category-link" href="/categories/programming/">
+                编程
+                <div class="category-count">2</div>
+            </a>
+        </div>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">标签</h3>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">归档</h3>
+      
+      
+        <a class="archive-link" href="/archives/2023/09 ">
+          九月 2023 
+          <div class="archive-count">6 </div>
+        </a>
+      
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">最新文章</h3>
+      <ul>
+        
+          <a class="recent-link" href="/2023/09/22/%E5%AD%97%E5%85%B8/" title="python——字典" >
+            <div class="recent-link-text">
+              python——字典
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2023/09/22/%E5%85%83%E7%BB%84/" title="python——元组" >
+            <div class="recent-link-text">
+              python——元组
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2023/09/22/%E5%88%97%E8%A1%A8/" title="python——列表" >
+            <div class="recent-link-text">
+              python——列表
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2023/09/22/%E9%9B%86%E5%90%88/" title="python——集合" >
+            <div class="recent-link-text">
+              python——集合
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2023/09/22/%E5%AD%97%E7%AC%A6%E4%B8%B2/" title="python——字符串" >
+            <div class="recent-link-text">
+              python——字符串
+            </div>
+          </a>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+<article id="post-字典" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        python——字典
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2023-09-22T11:35:10.019Z" itemprop="datePublished">2023-09-22</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    未分类 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            1k 词 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <h1 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h1><h2 id="1-定义"><a href="#1-定义" class="headerlink" title="1. 定义"></a>1. 定义</h2><h3 id="字典是“键值对”的无序可变序列"><a href="#字典是“键值对”的无序可变序列" class="headerlink" title="字典是“键值对”的无序可变序列"></a>字典是“键值对”的无序可变序列</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a=&#123;<span class="string">&#x27;name&#x27;</span>:<span class="string">&#x27;xybg&#x27;</span>,<span class="string">&#x27;age&#x27;</span>:<span class="string">&#x27;20&#x27;</span>,<span class="string">&#x27;sex&#x27;</span>:<span class="string">&#x27;women&#x27;</span>&#125;</span><br><span class="line">a</span><br></pre></td></tr></table></figure>
+
+<p>{‘name’: ‘xybg’, ‘age’: ‘20’, ‘sex’: ‘women’}</p>
+<ul>
+<li>字典中的每个元素都是一个“键值对”，包含：“键对象”和“值对象”。可以通过“键对象”实现快速获取、删除、更新对应的“值对象”。</li>
+<li>列表中我们通过“下标数字”找到对应的对象。字典中通过“键对象”找到对应的“值对象”。“键”是任意的不可变数据，比如：整数、浮点数、字符串、元组。但是：列表、字典、集合这些可变对象，不能作为“键”。并且“键”不可重复。</li>
+<li>“值”可以是任意的数据，并且可重复。</li>
+</ul>
+<h2 id="2-创建"><a href="#2-创建" class="headerlink" title="2. 创建"></a>2. 创建</h2><h3 id="2-1-1通过-、dict-来创建字典对象"><a href="#2-1-1通过-、dict-来创建字典对象" class="headerlink" title="2.1.1通过{}、dict()来创建字典对象"></a>2.1.1通过{}、dict()来创建字典对象</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b=<span class="built_in">dict</span>(name=<span class="string">&#x27;xybg&#x27;</span>,age=<span class="string">&#x27;20&#x27;</span>,sex=<span class="string">&#x27;women&#x27;</span>)</span><br><span class="line">b</span><br></pre></td></tr></table></figure>
+
+<p>{‘name’: ‘xybg’, ‘age’: ‘20’, ‘sex’: ‘women’}</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a=&#123;<span class="string">&#x27;name&#x27;</span>:<span class="string">&#x27;xybg&#x27;</span>,<span class="string">&#x27;age&#x27;</span>:<span class="string">&#x27;20&#x27;</span>,<span class="string">&#x27;sex&#x27;</span>:<span class="string">&#x27;women&#x27;</span>&#125;</span><br><span class="line">a</span><br></pre></td></tr></table></figure>
+
+<p>{‘name’: ‘xybg’, ‘age’: ‘20’, ‘sex’: ‘women’}</p>
+<h3 id="2-1-2-通过zip-创建字典对象"><a href="#2-1-2-通过zip-创建字典对象" class="headerlink" title="2.1.2 通过zip()创建字典对象"></a>2.1.2 通过zip()创建字典对象</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">k = [<span class="string">&#x27;name&#x27;</span>,<span class="string">&#x27;age&#x27;</span>,<span class="string">&#x27;job&#x27;</span>]</span><br><span class="line">v = [<span class="string">&#x27;xybg&#x27;</span>,<span class="number">20</span>,<span class="string">&#x27;student&#x27;</span>]</span><br><span class="line">d = <span class="built_in">dict</span>(<span class="built_in">zip</span>(k,v))</span><br><span class="line">d</span><br></pre></td></tr></table></figure>
+
+<p>{‘name’: ‘xybg’, ‘age’: 20, ‘job’: ‘student’}</p>
+<h3 id="2-1-3-通过fromkeys创建值为空的字典"><a href="#2-1-3-通过fromkeys创建值为空的字典" class="headerlink" title="2.1.3 通过fromkeys创建值为空的字典"></a>2.1.3 通过fromkeys创建值为空的字典</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a= <span class="built_in">dict</span>.fromkeys([<span class="string">&#x27;name&#x27;</span>,<span class="string">&#x27;age&#x27;</span>,<span class="string">&#x27;job&#x27;</span>])</span><br><span class="line">a</span><br></pre></td></tr></table></figure>
+
+<p>{‘name’: None, ‘age’: None, ‘job’: None}</p>
+<h2 id="3-字典元素的访问"><a href="#3-字典元素的访问" class="headerlink" title="3. 字典元素的访问"></a>3. 字典元素的访问</h2><blockquote>
+<p>设定一个字典对象：a &#x3D; {‘name’:’xybg’,’age’:20,’job’:’student’}</p>
+</blockquote>
+<h3 id="3-1-通过-键-获得“值”。若键不存在，则抛出异常。"><a href="#3-1-通过-键-获得“值”。若键不存在，则抛出异常。" class="headerlink" title="3.1  通过 [键] 获得“值”。若键不存在，则抛出异常。"></a>3.1  通过 [键] 获得“值”。若键不存在，则抛出异常。</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[<span class="string">&#x27;name&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>‘xybg’</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[<span class="string">&#x27;sex&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>Error</p>
+<h3 id="3-2-通过get-方法获得“值”。"><a href="#3-2-通过get-方法获得“值”。" class="headerlink" title="3.2 通过get()方法获得“值”。"></a>3.2 通过get()方法获得“值”。</h3><blockquote>
+<p>优点是：指定键不存在，返回None；也可以设定指定键不存在时默认返回的对象。推荐使用get()获取“值对象”。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a.get(<span class="string">&#x27;name&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>‘xybg’</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a.get(<span class="string">&#x27;sex&#x27;</span>,<span class="string">&#x27;woman&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>‘woman’</p>
+<h3 id="3-3-列出所有的键值对"><a href="#3-3-列出所有的键值对" class="headerlink" title="3.3  列出所有的键值对"></a>3.3  列出所有的键值对</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a.items()</span><br></pre></td></tr></table></figure>
+
+<p>dict_items([(‘name’, ‘xybg’), (‘age’, ‘20’), (‘job’:’student’)])</p>
+<h3 id="3-4-列出所有的键，列出所有的值"><a href="#3-4-列出所有的键，列出所有的值" class="headerlink" title="3.4 列出所有的键，列出所有的值"></a>3.4 列出所有的键，列出所有的值</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a.keys()</span><br></pre></td></tr></table></figure>
+
+<p>dict_keys([‘name’, ‘age’, ‘job’])</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a.values()</span><br></pre></td></tr></table></figure>
+
+<p>dict_values([‘xybg’, 20, ‘student’])</p>
+<h3 id="3-5-len-键值对的个数"><a href="#3-5-len-键值对的个数" class="headerlink" title="3.5 len() 键值对的个数"></a>3.5 len() 键值对的个数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">len</span>(a)</span><br></pre></td></tr></table></figure>
+
+<p>3</p>
+<h3 id="3-6-检测一个“键”是否在字典中"><a href="#3-6-检测一个“键”是否在字典中" class="headerlink" title="3.6 检测一个“键”是否在字典中"></a>3.6 检测一个“键”是否在字典中</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;name&quot;</span> <span class="keyword">in</span> a</span><br></pre></td></tr></table></figure>
+
+<p>True</p>
+<h2 id="4-字典元素添加、修改、删除"><a href="#4-字典元素添加、修改、删除" class="headerlink" title="4 字典元素添加、修改、删除"></a>4 字典元素添加、修改、删除</h2><h3 id="4-1-给字典新增“键值对”。如果“键”已经存在，则覆盖旧的键值对；如果“键”不存在，则新增“键值对”。"><a href="#4-1-给字典新增“键值对”。如果“键”已经存在，则覆盖旧的键值对；如果“键”不存在，则新增“键值对”。" class="headerlink" title="4.1 给字典新增“键值对”。如果“键”已经存在，则覆盖旧的键值对；如果“键”不存在，则新增“键值对”。"></a>4.1 给字典新增“键值对”。如果“键”已经存在，则覆盖旧的键值对；如果“键”不存在，则新增“键值对”。</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">b=<span class="built_in">dict</span>(name=<span class="string">&#x27;xybg&#x27;</span>,age=<span class="string">&#x27;20&#x27;</span>,sex=<span class="string">&#x27;woman&#x27;</span>)</span><br><span class="line">b[<span class="string">&#x27;job&#x27;</span>]=<span class="string">&#x27;student&#x27;</span></span><br><span class="line">a[<span class="string">&#x27;age&#x27;</span>]=<span class="string">&#x27;15&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>{‘name’: ‘xybg’, ‘age’: 15, ‘sex’: ‘woman’, ’job’:’student’ } </p>
+<h3 id="4-2-使用update-将新字典中所有键值对全部添加到旧字典对象上。如果key有重复，则直接覆盖。"><a href="#4-2-使用update-将新字典中所有键值对全部添加到旧字典对象上。如果key有重复，则直接覆盖。" class="headerlink" title="4.2 使用update()将新字典中所有键值对全部添加到旧字典对象上。如果key有重复，则直接覆盖。"></a>4.2 使用update()将新字典中所有键值对全部添加到旧字典对象上。如果key有重复，则直接覆盖。</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a=&#123;<span class="string">&#x27;name&#x27;</span>:<span class="string">&#x27;yk&#x27;</span>,<span class="string">&#x27;age&#x27;</span>:<span class="string">&#x27;14&#x27;</span>&#125;</span><br><span class="line">b=&#123;<span class="string">&#x27;name&#x27;</span>:<span class="string">&#x27;xybg&#x27;</span>,<span class="string">&#x27;age&#x27;</span>:<span class="string">&#x27;20&#x27;</span>,<span class="string">&#x27;sex&#x27;</span>:<span class="string">&#x27;女&#x27;</span>&#125;</span><br><span class="line">a.update(b)</span><br><span class="line">a</span><br></pre></td></tr></table></figure>
+
+<p>{‘name’: ‘xybg’, ‘age’: ‘20’, ‘sex’: ‘女’}</p>
+<h3 id="4-3-字典中元素的删除，可以使用del-方法；或者clear-删除所有键值对；pop-删除指定键值对，并返回对应的“值对象”。"><a href="#4-3-字典中元素的删除，可以使用del-方法；或者clear-删除所有键值对；pop-删除指定键值对，并返回对应的“值对象”。" class="headerlink" title="4.3 字典中元素的删除，可以使用del()方法；或者clear()删除所有键值对；pop()删除指定键值对，并返回对应的“值对象”。"></a>4.3 字典中元素的删除，可以使用del()方法；或者clear()删除所有键值对；pop()删除指定键值对，并返回对应的“值对象”。</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = &#123;<span class="string">&#x27;name&#x27;</span>:<span class="string">&#x27;xybg&#x27;</span>,<span class="string">&#x27;age&#x27;</span>:<span class="number">20</span>,<span class="string">&#x27;job&#x27;</span>:<span class="string">&#x27;student&#x27;</span>&#125;</span><br><span class="line"><span class="keyword">del</span>(a[<span class="string">&#x27;name&#x27;</span>])</span><br><span class="line">a</span><br></pre></td></tr></table></figure>
+
+<p>{‘age’: 20, ‘job’: ‘student’}</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b = a.pop(<span class="string">&#x27;job&#x27;</span>)</span><br><span class="line">b</span><br></pre></td></tr></table></figure>
+
+<p>student</p>
+<h3 id="4-4-popitem-：随机删除和返回该键值对。字典是“无序可变序列”，因此没有第一个元素、最后一个元素的概念；popitem弹出随机的项，因为字典并没有”最后的元素”或者其他有关顺序的概念。若想一个接一个地移除并处理项，这个方法就非常有效（因为不用首先获取键的列表）。"><a href="#4-4-popitem-：随机删除和返回该键值对。字典是“无序可变序列”，因此没有第一个元素、最后一个元素的概念；popitem弹出随机的项，因为字典并没有”最后的元素”或者其他有关顺序的概念。若想一个接一个地移除并处理项，这个方法就非常有效（因为不用首先获取键的列表）。" class="headerlink" title="4.4 popitem() ：随机删除和返回该键值对。字典是“无序可变序列”，因此没有第一个元素、最后一个元素的概念；popitem弹出随机的项，因为字典并没有”最后的元素”或者其他有关顺序的概念。若想一个接一个地移除并处理项，这个方法就非常有效（因为不用首先获取键的列表）。"></a>4.4 popitem() ：随机删除和返回该键值对。字典是“无序可变序列”，因此没有第一个元素、最后一个元素的概念；popitem弹出随机的项，因为字典并没有”最后的元素”或者其他有关顺序的概念。若想一个接一个地移除并处理项，这个方法就非常有效（因为不用首先获取键的列表）。</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">c=&#123;<span class="string">&#x27;name&#x27;</span>:<span class="string">&#x27;xybg&#x27;</span>,<span class="string">&#x27;age&#x27;</span>:<span class="string">&#x27;20&#x27;</span>,<span class="string">&#x27;sex&#x27;</span>:<span class="string">&#x27;女&#x27;</span>&#125;</span><br><span class="line">c.popitem()</span><br><span class="line">c</span><br></pre></td></tr></table></figure>
+
+<p>{‘name’: ‘xybg’, ‘age’: ‘20’}</p>
+<h2 id="5-核心底层原理-重要"><a href="#5-核心底层原理-重要" class="headerlink" title="5 核心底层原理(重要)"></a>5 核心底层原理(重要)</h2><h5 id="字典对象的核心是散列表。散列表是一个稀疏数组（总是有空白元素的数组），数组的每个单元叫做bucket。每个bucket有两部分：一个是键对象的引用，一个是值对象的引用。由于，所有bucket结构和大小一致，我们可以通过偏移量来读取指定bucket。"><a href="#字典对象的核心是散列表。散列表是一个稀疏数组（总是有空白元素的数组），数组的每个单元叫做bucket。每个bucket有两部分：一个是键对象的引用，一个是值对象的引用。由于，所有bucket结构和大小一致，我们可以通过偏移量来读取指定bucket。" class="headerlink" title="字典对象的核心是散列表。散列表是一个稀疏数组（总是有空白元素的数组），数组的每个单元叫做bucket。每个bucket有两部分：一个是键对象的引用，一个是值对象的引用。由于，所有bucket结构和大小一致，我们可以通过偏移量来读取指定bucket。"></a>字典对象的核心是散列表。散列表是一个稀疏数组（总是有空白元素的数组），数组的每个单元叫做bucket。每个bucket有两部分：一个是键对象的引用，一个是值对象的引用。由于，所有bucket结构和大小一致，我们可以通过偏移量来读取指定bucket。</h5><h2 id="6-用法总结"><a href="#6-用法总结" class="headerlink" title="6 用法总结"></a>6 用法总结</h2><h3 id="6-1键必须可散列"><a href="#6-1键必须可散列" class="headerlink" title="6.1键必须可散列"></a>6.1键必须可散列</h3><blockquote>
+<p>(1)数字、字符串、元组，都是可散列的。</p>
+<p>(2)自定义对象需要支持下面三点：</p>
+<p>​	a. 支持hash()函数</p>
+<p>​	b. 支持通过__eq__()方法检测相等性</p>
+<p>​	c. 若a&#x3D;&#x3D;b为真，则hash(a)&#x3D;&#x3D;hash(b)也为真。      </p>
+</blockquote>
+<h3 id="6-2-字典在内存中开销巨大，典型的空间换时间"><a href="#6-2-字典在内存中开销巨大，典型的空间换时间" class="headerlink" title="6.2 字典在内存中开销巨大，典型的空间换时间"></a>6.2 字典在内存中开销巨大，典型的空间换时间</h3><h3 id="6-3-键查询速度很快"><a href="#6-3-键查询速度很快" class="headerlink" title="6.3 键查询速度很快"></a>6.3 键查询速度很快</h3><h3 id="6-4-往字典里面添加新建可能导致扩容，导致散列表中键的次序变化。因此，不要在遍历字典的同时进行字典的修改。"><a href="#6-4-往字典里面添加新建可能导致扩容，导致散列表中键的次序变化。因此，不要在遍历字典的同时进行字典的修改。" class="headerlink" title="6.4 往字典里面添加新建可能导致扩容，导致散列表中键的次序变化。因此，不要在遍历字典的同时进行字典的修改。"></a>6.4 往字典里面添加新建可能导致扩容，导致散列表中键的次序变化。因此，不要在遍历字典的同时进行字典的修改。</h3>
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left  disabled "
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/2023/09/22/%E5%85%83%E7%BB%84/"
+      title="python——元组"
+     >
+
+    <p class="title-text">
+      
+        python——元组
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+ 
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2023 小羊<br>
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & Theme <a target="_blank" rel="noopener" href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/js/light-dark-switch.js"></script>
+</body>
+</html>
